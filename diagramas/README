@@ -1,1 +1,10 @@
 Documentación para la asignatura de BBDD, parte de creación de diagramas.
+
+Diagrama E-R , explicación:
+El modelo de E-R se ha construido pensando en un negocio real con ciertas particularidades en el reparto de beneficios, ya que en mi caso yo disponia ya de un stock real antes de incorporar a mi socia.
+Con lo que , la repartición de beneficios en caso de venta es variable.
+Aclaro los puntos más importantes:
+- Organización limpia : Género y Plataforma estan en tablas aparte para evitar sobreescribir mal los nombres ( ej: Poner SNES en vez de Super Nintendo ).
+- Stock : dentro de Videojuego esta metido el atributo " tipo_stock " para saber a quien pertenece. Así podré programar el reparto sin errores.
+- Las tablas Usuarios, compras y ventas dejaran huella de todo y se podrá rastrear cualquier movimiento.
+- Clientes : He usado un id_cliente para cada persona a la que compro o vendo. Aunque introduzca DNI , la omito como PK por la facilidad de cometer errores.
