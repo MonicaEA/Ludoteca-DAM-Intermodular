@@ -1,13 +1,13 @@
-package model;
+package com.retrojuegos.retrojuegos.model;
 import lombok.*;
-
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Plataformas {
-    private int idPlataforma;
+public class Generos {
+    private int idGenero;
     private String nombre;
+
 
 }

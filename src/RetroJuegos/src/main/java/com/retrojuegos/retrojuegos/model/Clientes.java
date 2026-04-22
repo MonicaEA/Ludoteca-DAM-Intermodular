@@ -1,4 +1,4 @@
-package model;
+package com.retrojuegos.retrojuegos.model;
 import lombok.*;
 
 

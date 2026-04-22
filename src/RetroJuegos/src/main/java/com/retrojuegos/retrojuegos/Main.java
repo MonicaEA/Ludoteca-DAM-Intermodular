@@ -1,6 +1,6 @@
 package com.retrojuegos.retrojuegos;
 
-import database.DBConnection;
+import com.retrojuegos.retrojuegos.database.DBConnection;
 
 import java.sql.Connection;
 
