@@ -1,12 +1,10 @@
 package com.retrojuegos.retrojuegos.controller;
 
 import com.retrojuegos.retrojuegos.data.DataSet;
-import com.retrojuegos.retrojuegos.model.Clientes;
-import com.retrojuegos.retrojuegos.model.EstadoJuego;
-import com.retrojuegos.retrojuegos.model.TipoStock;
-import com.retrojuegos.retrojuegos.model.Videojuegos;
+import com.retrojuegos.retrojuegos.model.*;
 
 import java.io.*;
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class GestionController {
@@ -17,6 +15,75 @@ public class GestionController {
 
 // TODO
     // Metodos de logica para crear juegos, etc
+
+    // metodo para crearCliente
+
+    public static void crearCliente(){
+        System.out.println("REGISTRO NUEVO CLIENTE");
+        System.out.println("Id cliente: " );
+        int idCliente = sc.nextInt();
+        sc.nextLine();
+        System.out.println("Nombre: ");
+        String nombre = sc.nextLine();
+        System.out.println("Apellido: ");
+        String apellidos = sc.nextLine();
+        System.out.println("DNI: ");
+        String dni = sc.nextLine();
+        System.out.println("Email: ");
+        String email = sc.nextLine();
+        System.out.println("Teléfono: ");
+        String telefono = sc.nextLine();
+        System.out.println("Selecciona tipo de cliente: 1: COMPRADOR , 2: VENDEDOR , 3 : AMBOS. Escribe el número seleccionado");
+        int opcion = sc.nextInt();
+        sc.nextLine();
+
+        TipoCliente tipoCliente;
+        switch (opcion){
+            case 1 -> tipoCliente = TipoCliente.COMPRADOR;
+            case 2 -> tipoCliente = TipoCliente.VENDEDOR;
+            case 3 -> tipoCliente = TipoCliente.AMBOS;
+            default -> {
+                System.out.println("Opción no válida. Asignamos por defecto AMBOS");
+                tipoCliente = TipoCliente.AMBOS;
+            }
+        }
+
+        Clientes nuevoCliente = new Clientes(idCliente,nombre,apellidos,dni,email,telefono,tipoCliente);
+        ClientesController.registrarCliente(nuevoCliente);
+        System.out.println("Cliente registrado correctamente.");
+
+
+    }
+
+    public static void menuCompra(){
+        System.out.println("FORMULARIO DE VENTA");
+        System.out.println("ID del juego: ");
+        int idJuego = sc.nextInt();
+        sc.nextLine();
+        System.out.println("Título: ");
+        String titulo = sc.nextLine();
+        System.out.println("Precio de compra: ");
+        double precioCompra = sc.nextDouble();
+        System.out.println("Precio de venta estimado: ");
+        double precioVentaEstimado = sc.nextDouble();
+
+        System.out.println("Selecciona tipo de stock: ");
+        System.out.println("1. Stock Mónica");
+        System.out.println("2. Stock ambas");
+        System.out.println("Indica el número seleccionado:");
+        int opcionStock = sc.nextInt();
+        sc.nextLine();
+
+        TipoStock tipoStock = (opcionStock ==2) ? TipoStock.PROPIO : TipoStock.COMUN;
+
+        //creo el videojuego según lo elegido
+        //TODO corregir el constructor o buscar solución
+        Videojuegos nuevoJuego = new Videojuegos(idJuego,titulo,precioCompra,precioVentaEstimado,)
+
+
+
+    }
+
 
     public static void guardarTodoFichero(){
         guardarJuegosFichero();
