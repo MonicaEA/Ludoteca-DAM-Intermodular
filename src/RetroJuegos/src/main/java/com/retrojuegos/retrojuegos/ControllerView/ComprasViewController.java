@@ -1,9 +1,6 @@
 package com.retrojuegos.retrojuegos.ControllerView;
 
-import com.retrojuegos.retrojuegos.controller.GestionController;
-import com.retrojuegos.retrojuegos.dao.ClientesDAO;
-import com.retrojuegos.retrojuegos.dao.ComprasDAO;
-import com.retrojuegos.retrojuegos.dao.VideojuegoDAO;
+import com.retrojuegos.retrojuegos.dao.*;
 import com.retrojuegos.retrojuegos.model.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -29,10 +26,10 @@ public class ComprasViewController implements Initializable {
     private ChoiceBox<TipoStock> choiceTipo;
 
     @FXML
-    private ComboBox<String> comboGenero;
+    private ComboBox<Generos> comboGenero;
 
     @FXML
-    private ComboBox<String> comboPlataforma;
+    private ComboBox<Plataformas> comboPlataforma;
 
     @FXML
     private TextField txtApellidos;
@@ -62,13 +59,23 @@ public class ComprasViewController implements Initializable {
     private ClientesDAO clientesDAO = new ClientesDAO();
     private VideojuegoDAO videojuegoDAO = new VideojuegoDAO();
     private ComprasDAO comprasDAO = new ComprasDAO();
-
+    private PlataformasDAO plataformasDAO = new PlataformasDAO();
+    private GenerosDAO generosDAO = new GenerosDAO();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         choiceEstado.getItems().setAll(EstadoJuego.values());
         choiceTipo.getItems().setAll(TipoStock.values());
+        try{
+            comboPlataforma.getItems().setAll(plataformasDAO.todasPlataformas());
+            comboPlataforma.getSelectionModel().selectFirst();
+            comboGenero.getItems().setAll(generosDAO.todasGeneros());
+            comboGenero.getSelectionModel().selectFirst();
+        }catch (SQLException e){
+            System.out.println("Error al cargar datos: "+e.getMessage());
+        }
+
 
         // para autocompletar
         txtTelefono.focusedProperty().addListener(new ChangeListener<Boolean>() {
@@ -87,25 +94,38 @@ public class ComprasViewController implements Initializable {
 
 
     private void buscarCliente() {
+    String movil = txtTelefono.getText();
+    if (movil.isEmpty()){
+        return;
+    }
+    try{
+        Clientes clientes = clientesDAO.buscarPorTelefono(movil);
+        if (clientes!=null){
+            txtDni.setText(clientes.getDni());
+            txtNombre.setText(clientes.getNombre());
+            txtApellidos.setText(clientes.getApellidos());
+            txtEmail.setText(clientes.getEmail());
+            permitirEdicion(true); // esto es porque les he quitado el editable a los campos si encuentra el telefono primero
 
-        try {
-            Clientes c = clientesDAO.buscarPorTelefono(txtTelefono.getText());
-            if (c != null) {
-                txtDni.setText(c.getDni());
-                txtNombre.setText(c.getNombre());
-                txtApellidos.setText(c.getApellidos());
-                txtEmail.setText(c.getEmail());
-            }
-        }catch (SQLException e){
-            e.printStackTrace();
         }
 
+        }catch (SQLException e){
+        System.out.println("Error al buscar cliente: "+e.getMessage());
+    }
+
+    }
+
+    private void permitirEdicion(boolean editable) {
+        txtDni.setEditable(editable);
+        txtNombre.setEditable(editable);
+        txtApellidos.setEditable(editable);
+        txtEmail.setEditable(editable);
 
     }
 
     private void ejecutarCompra() {
         try{
-            Usuarios usuario = GestionController.getUsuarioLogueado();
+            Usuarios usuario = UsuarioActualController.getUsuarioLogueado();
 
             Clientes cliente = clientesDAO.buscarPorTelefono(txtTelefono.getText());
                 if (cliente == null){

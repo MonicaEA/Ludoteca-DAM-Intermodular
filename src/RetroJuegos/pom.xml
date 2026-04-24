@@ -74,7 +74,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.retrojuegos.retrojuegos/com.retrojuegos.retrojuegos.HelloApplication
+                            <mainClass>com.retrojuegos.retrojuegos/com.retrojuegos.retrojuegos.AplicacionStart
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

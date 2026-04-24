@@ -1,6 +1,5 @@
 package com.retrojuegos.retrojuegos.ControllerView;
 
-import com.retrojuegos.retrojuegos.controller.GestionController;
 import com.retrojuegos.retrojuegos.dao.UsuarioDAO;
 import com.retrojuegos.retrojuegos.model.Usuarios;
 import javafx.fxml.FXML;
@@ -54,7 +53,7 @@ public class LoginViewController implements Initializable {
             Usuarios user = usuarioDAO.validarLogin(dni, pass);
             if (user != null) {
                 System.out.println("Datos correctos ,bienvenida al curro " + user.getNombre());
-                GestionController.setUsuarioLogueado(user);
+                UsuarioActualController.setUsuarioLogueado(user);
                 //TODO: Aquí cargaré la ventana del menú
                 cambiarAMenuPrincipal();
 

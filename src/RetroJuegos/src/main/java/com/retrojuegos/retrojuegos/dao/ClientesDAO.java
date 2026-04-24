@@ -19,13 +19,13 @@ public class ClientesDAO {
     //registrar cliente
     public void insertarCliente(Clientes clientes) throws SQLException {
         Connection connection = DBConnection.getConnection();
-        String query = "INSERT INTO clientes(nombre,apellidos,dni,email,telefono,tipo_cliente) VALUES (?,?,?,?,?,?)";
+        String query = "INSERT INTO clientes(telefono,dni,nombre,apellidos,email,tipo_cliente) VALUES (?,?,?,?,?,?)";
         preparedStatement = connection.prepareStatement(query);
-        preparedStatement.setString(1,clientes.getNombre());
-        preparedStatement.setString(2,clientes.getApellidos());
-        preparedStatement.setString(3,clientes.getDni());
-        preparedStatement.setString(4,clientes.getEmail());
-        preparedStatement.setString(5,clientes.getTelefono());
+        preparedStatement.setString(1,clientes.getTelefono());
+        preparedStatement.setString(2,clientes.getDni());
+        preparedStatement.setString(3,clientes.getNombre());
+        preparedStatement.setString(4,clientes.getApellidos());
+        preparedStatement.setString(5,clientes.getEmail());
         preparedStatement.setString(6,clientes.getTipoCliente().name());
 
         preparedStatement.executeUpdate();
@@ -47,12 +47,12 @@ public class ClientesDAO {
         if (resultSet.next()){
             return new Clientes(
                     resultSet.getInt("id_cliente"),
+                    resultSet.getString("telefono"),
+                    resultSet.getString("dni"),
                     resultSet.getString("nombre"),
                     resultSet.getString("apellidos"),
-                    resultSet.getString("dni"),
                     resultSet.getString("email"),
-                    resultSet.getString("telefono"),
-                    TipoCliente.valueOf(resultSet.getString("tipo_cliente"))
+                    TipoCliente.valueOf(resultSet.getString("tipo_cliente").toUpperCase())
             );
         }
         return null;

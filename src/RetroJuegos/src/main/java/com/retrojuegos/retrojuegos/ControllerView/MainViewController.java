@@ -47,7 +47,7 @@ public class MainViewController implements Initializable {
     private void abrirVentanaCompra(){
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/retrojuegos/retrojuegos/compra-view.fxml)"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/retrojuegos/retrojuegos/compra-view.fxml"));
 
             Parent root = loader.load();
 

@@ -9,5 +9,8 @@ public class Generos {
     private int idGenero;
     private String nombre;
 
-
+    @Override
+    public String toString() {
+        return this.nombre;
+    }
 }

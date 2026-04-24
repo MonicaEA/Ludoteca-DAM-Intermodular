@@ -1,9 +1,6 @@
 package com.retrojuegos.retrojuegos;
 
-import com.retrojuegos.retrojuegos.controller.GestionController;
-import com.retrojuegos.retrojuegos.data.DataSet;
 import com.retrojuegos.retrojuegos.database.DBConnection;
-import com.retrojuegos.retrojuegos.model.Usuarios;
 
 import java.sql.Connection;
 import java.util.Scanner;

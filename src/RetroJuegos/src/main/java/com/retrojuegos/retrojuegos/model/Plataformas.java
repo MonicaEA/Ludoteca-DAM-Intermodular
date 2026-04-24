@@ -10,4 +10,8 @@ public class Plataformas {
     private int idPlataforma;
     private String nombre;
 
+    @Override
+    public String toString() {
+        return this.nombre;
+    }
 }
