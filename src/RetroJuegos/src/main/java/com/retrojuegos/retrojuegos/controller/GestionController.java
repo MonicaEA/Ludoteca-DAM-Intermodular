@@ -23,42 +23,7 @@ public class GestionController {
 
     // metodo para crearCliente
 
-    public static void crearCliente(){
-        System.out.println("REGISTRO NUEVO CLIENTE");
-        System.out.println("Id cliente: " );
-        int idCliente = sc.nextInt();
-        sc.nextLine();
-        System.out.println("Nombre: ");
-        String nombre = sc.nextLine();
-        System.out.println("Apellido: ");
-        String apellidos = sc.nextLine();
-        System.out.println("DNI: ");
-        String dni = sc.nextLine();
-        System.out.println("Email: ");
-        String email = sc.nextLine();
-        System.out.println("Teléfono: ");
-        String telefono = sc.nextLine();
-        System.out.println("Selecciona tipo de cliente: 1: COMPRADOR , 2: VENDEDOR , 3 : AMBOS. Escribe el número seleccionado");
-        int opcion = sc.nextInt();
-        sc.nextLine();
 
-        TipoCliente tipoCliente;
-        switch (opcion){
-            case 1 -> tipoCliente = TipoCliente.COMPRADOR;
-            case 2 -> tipoCliente = TipoCliente.VENDEDOR;
-            case 3 -> tipoCliente = TipoCliente.AMBOS;
-            default -> {
-                System.out.println("Opción no válida. Asignamos por defecto AMBOS");
-                tipoCliente = TipoCliente.AMBOS;
-            }
-        }
-
-        Clientes nuevoCliente = new Clientes(idCliente,nombre,apellidos,dni,email,telefono,tipoCliente);
-        ClientesController.registrarCliente(nuevoCliente);
-        System.out.println("Cliente registrado correctamente.");
-
-
-    }
 
     public static void setUsuarioLogueado(Usuarios u) {
         usuarioLogueado = u;

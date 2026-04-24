@@ -30,7 +30,7 @@ public class UsuarioDAO {
             resultSet.getString("dni"),
             resultSet.getString("email"),
             resultSet.getString("pass"),
-            Perfil.valueOf(resultSet.getString("perfil"))
+            Perfil.valueOf(resultSet.getString("perfil").toUpperCase())
             );
         }
         return null;
