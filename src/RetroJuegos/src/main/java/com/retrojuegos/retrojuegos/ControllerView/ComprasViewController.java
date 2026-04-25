@@ -101,12 +101,19 @@ public class ComprasViewController implements Initializable {
     try{
         Clientes clientes = clientesDAO.buscarPorTelefono(movil);
         if (clientes!=null){
+            //si el cliente existe bloqueo campos.
             txtDni.setText(clientes.getDni());
             txtNombre.setText(clientes.getNombre());
             txtApellidos.setText(clientes.getApellidos());
             txtEmail.setText(clientes.getEmail());
-            permitirEdicion(true); // esto es porque les he quitado el editable a los campos si encuentra el telefono primero
+            permitirEdicion(false);
 
+        }else {
+            txtDni.clear();
+            txtNombre.clear();
+            txtApellidos.clear();
+            txtEmail.clear();
+            permitirEdicion(true);
         }
 
         }catch (SQLException e){
@@ -130,7 +137,7 @@ public class ComprasViewController implements Initializable {
             Clientes cliente = clientesDAO.buscarPorTelefono(txtTelefono.getText());
                 if (cliente == null){
                    //TODO corregir para añadir campo TipoCliente , ahora por defecto tengo AMBOS , si da tiempo corregir
-                    cliente = new Clientes(0, txtNombre.getText(), txtApellidos.getText(), txtDni.getText(), txtEmail.getText(), txtTelefono.getText(), TipoCliente.AMBOS);
+                    cliente = new Clientes(0, txtDni.getText(), txtNombre.getText(), txtApellidos.getText(), txtEmail.getText(), txtTelefono.getText(), TipoCliente.AMBOS);
                     clientesDAO.insertarCliente(cliente);
                     cliente = clientesDAO.buscarPorTelefono(txtTelefono.getText());
                 }
