@@ -17,7 +17,7 @@ public class Clientes {
           return idCliente+";"+nombre+";"+apellidos+";"+email+";"+telefono;
      }
 
-     public Clientes(int idCliente, String telefono, String dni, String nombre, String apellidos, String email, TipoCliente tipoCliente) {
+     public Clientes(int idCliente, String dni, String nombre, String apellidos, String email, String telefono, TipoCliente tipoCliente) {
           this.idCliente = idCliente;
           this.telefono = telefono;
           this.dni = dni;
