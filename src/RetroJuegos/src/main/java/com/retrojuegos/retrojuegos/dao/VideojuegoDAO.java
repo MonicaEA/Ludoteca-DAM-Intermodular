@@ -39,5 +39,32 @@ public class VideojuegoDAO {
 
     }
 
+    public java.util.List<Videojuegos> obtenerDisponibles() throws SQLException {
+        java.util.List<Videojuegos> lista = new java.util.ArrayList<>();
+        connection = DBConnection.getConnection();
+
+        // Consulta limpia, solo leyendo la tabla videojuegos
+        String query = "SELECT vj.* FROM videojuegos vj LEFT JOIN ventas v ON vj.id_juego = v.id_juego WHERE v.id_juego IS NULL";
+
+        preparedStatement = connection.prepareStatement(query);
+        resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            Videojuegos juego = new Videojuegos(); // Constructor vacío
+
+            juego.setIdJuego(resultSet.getInt("id_juego"));
+            juego.setTitulo(resultSet.getString("titulo"));
+            juego.setPrecioCompra(resultSet.getDouble("precio_compra"));
+            juego.setPrecioVentaEstimada(resultSet.getDouble("precio_venta_estimado"));
+            juego.setIdPlataforma(resultSet.getInt("id_plataforma"));
+            juego.setIdGenero(resultSet.getInt("id_genero"));
+            juego.setEstado(com.retrojuegos.retrojuegos.model.EstadoJuego.valueOf(resultSet.getString("estado").toUpperCase().replace(" ", "_")));
+            juego.setTipo(com.retrojuegos.retrojuegos.model.TipoStock.valueOf(resultSet.getString("tipo_stock").toUpperCase().replace(" ", "_")));
+            juego.setUsuarioRegistro(resultSet.getInt("id_usuario_registro"));
+
+            lista.add(juego);
+        }
+        return lista;
+    }
 
 }

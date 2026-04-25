@@ -9,4 +9,5 @@ module com.retrojuegos.retrojuegos {
     opens com.retrojuegos.retrojuegos to javafx.fxml;
     exports com.retrojuegos.retrojuegos;
     opens com.retrojuegos.retrojuegos.ControllerView to javafx.fxml;
+    opens com.retrojuegos.retrojuegos.model to javafx.base;
 }

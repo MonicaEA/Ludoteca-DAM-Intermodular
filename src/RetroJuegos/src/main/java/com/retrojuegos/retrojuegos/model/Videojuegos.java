@@ -7,11 +7,11 @@ import lombok.*;
 @NoArgsConstructor
 public class Videojuegos {
 
-    private int idJuego;
+    private Integer idJuego;
     private String titulo;
     private double precioCompra;
     private double precioVentaEstimada;
-    private int idPlataforma;
+    private Integer idPlataforma;
     private int idGenero;
     private EstadoJuego estado;
     private TipoStock tipo;

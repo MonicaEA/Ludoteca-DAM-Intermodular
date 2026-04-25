@@ -8,22 +8,20 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
-fx:controller="com.retrojuegos.retrojuegos.ControllerView.VentasViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.retrojuegos.retrojuegos.ControllerView.VentasViewController">
    <children>
       <TextField fx:id="txtBuscar" layoutX="8.0" layoutY="52.0" prefHeight="25.0" prefWidth="351.0" promptText="Buscar Videojuego..." />
       <TableView fx:id="tablaCatalogo" layoutX="8.0" layoutY="89.0" prefHeight="350.0" prefWidth="351.0">
         <columns>
-          <TableColumn prefWidth="132.0" text="Titulo" />
-          <TableColumn prefWidth="127.0" text="Plataforma" />
-            <TableColumn prefWidth="91.0" text="Precio" />
+          <TableColumn fx:id="colTabTitulo" prefWidth="132.0" text="Titulo" />
+          <TableColumn fx:id="colTabPlataforma" prefWidth="127.0" text="Plataforma" />
+            <TableColumn fx:id="colTabPrecio" prefWidth="91.0" text="Precio" />
         </columns>
       </TableView>
       <TableView fx:id="tablaCarrito" layoutX="395.0" layoutY="89.0" prefHeight="350.0" prefWidth="303.0">
         <columns>
-          <TableColumn prefWidth="217.0" text="Título" />
-          <TableColumn prefWidth="85.0" text="Precio" />
+          <TableColumn fx:id="colCarritoTitulo" prefWidth="217.0" text="Título" />
+          <TableColumn fx:id="colCarritoPrecio" prefWidth="85.0" text="Precio" />
         </columns>
       </TableView>
       <Label layoutX="475.0" layoutY="56.0" text="🛒 Carrito de la compra" />

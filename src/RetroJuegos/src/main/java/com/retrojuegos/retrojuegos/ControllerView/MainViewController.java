@@ -23,13 +23,12 @@ public class MainViewController implements Initializable {
 
         btnComprar.setOnAction(event->{
             System.out.println("PAsando a pantalla de compras...");
-
-            //todo cambio de pantallas
             abrirVentanaCompra();
         });
 
         btnVender.setOnAction(event->{
             System.out.println("Pantalla de ventas...");
+            abrirVentanaVenta();
         });
 
         btnStock.setOnAction(event->{
@@ -58,6 +57,26 @@ public class MainViewController implements Initializable {
             ((Stage) btnComprar.getScene().getWindow()).close();
         }catch (IOException e){
             System.out.println("Error al cargar ventana de compras: "+e.getMessage());
+            e.printStackTrace();
+        }
+
+
+    }
+
+    private void abrirVentanaVenta(){
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/retrojuegos/retrojuegos/ventas-view.fxml"));
+
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("REGISTRO DE VENTAS");
+            stage.setScene(new Scene(root));
+            stage.show();
+            ((Stage) btnVender.getScene().getWindow()).close();
+        }catch (IOException e){
+            System.out.println("Error al cargar ventana de ventas: "+e.getMessage());
             e.printStackTrace();
         }
 
