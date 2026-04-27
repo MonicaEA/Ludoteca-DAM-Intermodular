@@ -10,7 +10,7 @@ INSERT INTO clientes (dni, nombre, apellidos, email, telefono, tipo_cliente) VAL
 ('44455566B', 'María', 'Gónzalez', 'maria@gmail.com', '611444555', 'comprador'),
 ('11223344A', 'Juan', 'Lemos', 'juan@gmail.com', '692100743', 'comprador'),
 ('22334477B', 'Yaiza', 'Treus', 'yaiza@gmail.com', '637756106', 'comprador'),
-('33445566C', 'Miriam', 'Espiñeira', 'miriam@gmail.com', '692100743', 'comprador'),
+('33445566C', 'Miriam', 'Espiñeira', 'miriam@gmail.com', '692100742', 'comprador'),
 ('77889944D', 'Gina', 'Aragon', 'gina@gmail.com', '625302174', 'comprador'),
 ('74185292E', 'Vanesa', 'Lorenzo', 'vane@gmail.com', '656167691', 'comprador'),
 ('14725283F', 'Óscar', 'Salvador', 'oscar@gmail.com', '666666666', 'comprador'),
