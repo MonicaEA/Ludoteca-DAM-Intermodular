@@ -28,7 +28,7 @@
          <children>
             <ImageView fitHeight="235.0" fitWidth="607.0" layoutX="-3.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true" smooth="false" AnchorPane.bottomAnchor="192.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="-4.0" AnchorPane.topAnchor="146.0">
                <image>
-                  <Image url="@iconos/LogoRetroJuegos.png" />
+                  <Image url="@images/LogoRetroJuegos.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="NONE" />

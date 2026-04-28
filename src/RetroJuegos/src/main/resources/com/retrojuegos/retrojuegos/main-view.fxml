@@ -19,7 +19,7 @@ fx:controller="com.retrojuegos.retrojuegos.ControllerView.MainViewController">
                <graphic>
                   <ImageView fitHeight="54.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: 1;">
                      <image>
-                        <Image url="@iconos/comprar.png" />
+                        <Image url="@images/comprar.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -31,7 +31,7 @@ fx:controller="com.retrojuegos.retrojuegos.ControllerView.MainViewController">
                <graphic>
                   <ImageView fitHeight="69.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@iconos/vender.png" />
+                        <Image url="@images/vender.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -43,7 +43,7 @@ fx:controller="com.retrojuegos.retrojuegos.ControllerView.MainViewController">
                <graphic>
                   <ImageView fitHeight="63.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@iconos/buscar.png" />
+                        <Image url="@images/buscar.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -55,7 +55,7 @@ fx:controller="com.retrojuegos.retrojuegos.ControllerView.MainViewController">
                <graphic>
                   <ImageView fitHeight="62.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@iconos/finanzas.png" />
+                        <Image url="@images/finanzas.png" />
                      </image>
                   </ImageView>
                </graphic>
