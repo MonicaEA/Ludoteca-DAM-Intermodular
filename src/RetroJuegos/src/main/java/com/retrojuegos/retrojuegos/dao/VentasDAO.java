@@ -1,13 +1,14 @@
 package com.retrojuegos.retrojuegos.dao;
-
 import com.retrojuegos.retrojuegos.database.DBConnection;
 import com.retrojuegos.retrojuegos.model.Videojuegos;
-
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.List;
 
 public class VentasDAO {
+    private Connection connection;
+    private PreparedStatement preparedStatement;
+    private ResultSet resultSet;
 
     public boolean registrarVenta(List<Videojuegos> carrito, int idUsuario) {
         String query = "INSERT INTO ventas (id_juego, id_usuario, id_cliente, fecha_venta, precio_final) VALUES (?,?,?,?,?)";
@@ -51,6 +52,46 @@ public class VentasDAO {
         }
     }
 
+    public double obtenerSumaTotalVentas() throws SQLException {
+        double total = 0.0;
+        connection = DBConnection.getConnection();
+
+
+        String query = "SELECT SUM(v.precio_venta_estimado) AS total " +
+                "FROM ventas ve " +
+                "JOIN videojuegos v ON ve.id_juego = v.id_juego";
+
+        preparedStatement = connection.prepareStatement(query);
+        resultSet = preparedStatement.executeQuery();
+
+        if (resultSet.next()) {
+            total = resultSet.getDouble("total");
+        }
+
+        preparedStatement.close();
+        return total;
+    }
+
+    public double obtenerBeneficioNeto(String tipoStock) throws SQLException {
+        double beneficio = 0.0;
+        connection = DBConnection.getConnection();
+
+        // Sumamos la diferencia entre venta estimada y compra para ese tipo de stock
+        String query = "SELECT SUM(v.precio_venta_estimado - v.precio_compra) AS beneficio " +
+                "FROM ventas ve " +
+                "JOIN videojuegos v ON ve.id_juego = v.id_juego " +
+                "WHERE v.tipo_stock = ?";
+
+        preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, tipoStock.toLowerCase());
+
+        resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+            beneficio = resultSet.getDouble("beneficio");
+        }
+        preparedStatement.close();
+        return beneficio;
+    }
 
     }
 
