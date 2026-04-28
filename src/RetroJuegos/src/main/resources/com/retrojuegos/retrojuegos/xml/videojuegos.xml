@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<retro_inventario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:noNamespaceSchemaLocation="esquema.xsd">
+    <usuarios>
+        <usuario id="u1">
+            <nombre>Mónica</nombre>
+            <apellidos>Espiñeira</apellidos>
+            <email>monica.espineira1988@gmail.com</email>
+        </usuario>
+        <usuario id="u2">
+            <nombre>Beatriz</nombre>
+            <apellidos>Ferreira</apellidos>
+            <email>bettyfer@gmail.com</email>
+        </usuario>
+    </usuarios>
