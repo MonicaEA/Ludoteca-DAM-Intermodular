@@ -1,12 +1,141 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-    <!-- Regla para los tipos de stock , o común o propio !-->
+    <xs:simpleType name="texto50Regla">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+        </xs:restriction>
+    </xs:simpleType>
 
+    <xs:simpleType name="texto100Regla">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tituloRegla">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="150"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="emailRegla">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+            <xs:pattern value=".+@.+\..+"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
     <xs:simpleType name="tipoStockRegla">
         <xs:restriction base="xs:string">
                 <xs:enumeration value="comun"/>
                 <xs:enumeration value="propio"/>
         </xs:restriction>
     </xs:simpleType>
+
+
+    <xs:simpleType name="tipoEstadoRegla">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="PRECINTADO"/>
+            <xs:enumeration value="COMPLETO"/>
+            <xs:enumeration value="CAJA SIN MANUAL"/>
+            <xs:enumeration value="SOLO JUEGO"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="precioRegla">
+        <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="8"/>
+            <xs:fractionDigits value="2"/>
+            <xs:minInclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:complexType name="usuarioTipo">
+        <xs:sequence>
+            <xs:element name="nombre" type="texto50Regla" minOccurs="1"/>
+            <xs:element name="apellidos" type="texto100Regla" minOccurs="1"/>
+            <xs:element name="email" type="emailRegla" minOccurs="1"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:ID" use="required"/>
+    </xs:complexType>
+
+    <!--regla para tipo de precios!-->
+    <xs:complexType name="preciosTipo">
+        <xs:sequence>
+            <xs:element name="compra" minOccurs="1">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="precioRegla">
+                            <xs:attribute name="moneda" type="xs:string" use="required"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="venta_estimado" minOccurs="1">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="precioRegla">
+                            <xs:attribute name="moneda" type="xs:string" use="required"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="estadoTipo">
+        <xs:sequence>
+            <xs:element name="tipo" type="tipoStockRegla" minOccurs="1"/>
+            <xs:element name="estado" type="tipoEstadoRegla" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="videojuegoTipo">
+        <xs:sequence>
+            <xs:element name="titulo" type="tituloRegla" minOccurs="1"/>
+            <xs:element name="plataforma" type="texto50Regla" minOccurs="1"/>
+            <xs:element name="genero" type="texto50Regla" minOccurs="1"/>
+            <xs:element name="precios" type="preciosTipo" minOccurs="1"/>
+            <xs:element name="stock_info" type="estadoTipo" minOccurs="1"/>
+            <xs:element name="fecha_registro" type="xs:date" minOccurs="1"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:ID" use="required"/>
+        <xs:attribute name="usuarioReg" type="xs:IDREF" use="required"/>
+    </xs:complexType>
+
+    <xs:element name="retro_inventario">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="usuarios" minOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="usuario" type="usuarioTipo" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="catalogo" minOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="videojuego" type="videojuegoTipo" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="version" type="xs:string" fixed="1.0" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    </xs:schema>
+
+
+
+
+
+
+
+
 

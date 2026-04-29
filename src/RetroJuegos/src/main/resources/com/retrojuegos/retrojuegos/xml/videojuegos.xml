@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<retro_inventario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<retro_inventario version="1.0"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:noNamespaceSchemaLocation="esquema.xsd">
     <usuarios>
         <usuario id="u1">
@@ -45,7 +46,7 @@
 
             <stock_info>
                 <tipo>propio</tipo>
-                <estado>CAJA_SIN_MANUAL</estado>
+                <estado>CAJA SIN MANUAL</estado>
             </stock_info>
 
             <fecha_registro>2026-04-28</fecha_registro>
