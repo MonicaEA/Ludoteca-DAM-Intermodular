@@ -1,9 +1,10 @@
 package com.retrojuegos.retrojuegos.ControllerView;
-
 import com.retrojuegos.retrojuegos.dao.GenerosDAO;
 import com.retrojuegos.retrojuegos.dao.PlataformasDAO;
 import com.retrojuegos.retrojuegos.dao.VideojuegoDAO;
+import com.retrojuegos.retrojuegos.database.DBConnection;
 import com.retrojuegos.retrojuegos.model.*;
+import com.retrojuegos.retrojuegos.util.ExportadorXML;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -19,16 +20,17 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.SQLException;
+
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class StockViewController implements Initializable {
 
-    @FXML private Button btnLimpiar, btnMenu;
+    @FXML private Button btnLimpiar, btnMenu,exportarXML;
     @FXML private ComboBox<String> comboEstado, comboGenero, comboPlataforma, comboStock;
     @FXML private TableView<Videojuegos> tablaStock;
     @FXML private TextField txtBuscar;
@@ -100,6 +102,8 @@ public class StockViewController implements Initializable {
             }
         });
 
+        exportarXML.setOnAction(event->ejecutarExportacion());
+
     }
 
     private void cargarInventario() {
@@ -161,5 +165,22 @@ public class StockViewController implements Initializable {
 
             return coincideTexto && coincidePlataforma && coincideGenero && coincideEstado && coincideTipo;
         });
+    }
+
+    private void ejecutarExportacion() {
+        try {
+            Connection conn = DBConnection.getConnection();
+            ExportadorXML exportador = new ExportadorXML();
+            exportador.exportarInventario(conn);
+
+            System.out.println("Inventario exportado correctamente a XML.");
+
+        } catch (SQLException e) {
+            System.out.println("Error de base de datos: " + e.getMessage());
+        } catch (Exception e) {
+
+            System.out.println("Error al generar el XML: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }

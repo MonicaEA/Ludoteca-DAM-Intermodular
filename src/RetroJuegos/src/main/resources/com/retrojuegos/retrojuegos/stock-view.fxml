@@ -48,6 +48,7 @@
                   <Insets top="60.0" />
                </VBox.margin>
             </Button>
+            <Button fx:id="exportarXML" mnemonicParsing="false" text="Exportar a XML" />
             <Button fx:id="btnMenu" mnemonicParsing="false" text="Volver al Menú Principal" />
          </children>
          <BorderPane.margin>

@@ -5,7 +5,7 @@ module com.retrojuegos.retrojuegos {
     requires java.sql;
     requires java.desktop;
     requires mysql.connector.j;
-
+    requires java.xml;
 
     opens com.retrojuegos.retrojuegos to javafx.fxml;
     exports com.retrojuegos.retrojuegos;
