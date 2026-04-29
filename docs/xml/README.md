@@ -18,7 +18,7 @@ El archivo generado (videojuegos_exportados.xml) refleja el estado actual del st
 
 2. ¿Cómo la válido?
 Para comprobar el xml se ha usado un archivo xsd llamado esquema.xsd
-[Esquema XSD]([src/main/resources/com/retrojuegos/retrojuegos/xml/esquema.xsd](https://github.com/MonicaEA/CompraVenta-DAM-Intermodular/blob/0f9980f4bd85028db45d40c9df9045598022e86c/docs/xml/esquema.xsd))
+[Esquema XSD](https://github.com/MonicaEA/CompraVenta-DAM-Intermodular/blob/0f9980f4bd85028db45d40c9df9045598022e86c/docs/xml/esquema.xsd)
 Se han incorporado las siguientes reglas:
   - Estructura obligatoria con orden lógico.
   - IDS y relaciones , cada videojuego debe tener un id único y tiene que estar relacionado con un usuario que a su vez tiene un id.
@@ -31,7 +31,7 @@ Se han incorporado las siguientes reglas:
 Esta funcionalidad se integra en la vista "VER STOCK" del programa:
   Capa de Vista: Se ha añadido un botón de exportación que dispara el evento.
   Capa de Utilidad: Una clase ExportadorXML realiza una consulta compleja (JOIN) a la base de datos para unificar la información dispersa en varias tablas.
-  Ruta de salida: El archivo se genera automáticamente en la ruta de recursos del proyecto: [Archivos XML](src/main/resources/com/retrojuegos/retrojuegos/xml/), quedando disponible para su uso inmediato.
+  Ruta de salida: El archivo se genera automáticamente en la ruta de recursos del proyecto: [Archivos XML](https://github.com/MonicaEA/CompraVenta-DAM-Intermodular/tree/e15676705c8ca8c7f0274c8ef83169cdab50511e/src/RetroJuegos/src/main/resources/com/retrojuegos/retrojuegos/xml), quedando disponible para su uso inmediato.
 
 Ha sido comprobado y testeado confirmando que funciona correctamente.
 He añadido las capturas de pantalla para verificar que se ha válidado y forzado errores:
