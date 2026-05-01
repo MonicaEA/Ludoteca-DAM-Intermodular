@@ -1,4 +1,4 @@
-# 🕹️ RetroJuegos: Sistema de Gestión Intermodular
+# 🕹️ RetroJuegos: Proyecto Intermodular
 <p align="center">
   <img src="./docs/imagenes/LogoRetroJuegos.jpg" alt="Logo RetroJuegos" width="300">
 </p>
