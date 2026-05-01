@@ -23,7 +23,7 @@ Para facilitar la navegación y entender cómo se aplican los conocimientos de c
 *   [**📄 /docs (Documentación Técnica)**](./docs) : Repositorio central de documentación del proyecto:
     *   [**📁 Empleabilidad**](./docs/empleabilidad) : Investigación del sector, perfil profesional y presentación del proyecto.
     *   [**📁 XML**](./docs/xml): Estructuras de datos e informes. (Asignatura: **Lenguaje de Marcas**).
-    *   [**📁 Sistemas**](./docs/sistemas): Informe técnico del proyecto y vídeo del funcionamiento (Asignatura: **Sistemas Informáticos**).
+    *   [**📁 Sistemas**](./docs/sistemas): Informe técnico del proyecto, información de instalación y uso y vídeo del funcionamiento (Asignatura: **Sistemas Informáticos**).
 
 ---
 
