@@ -1,26 +1,55 @@
-CompraVenta-DAM-Intermodular
-Este proyecto nace de un hobby que llevo tiempo gestionando: la búsqueda y recuperación de videojuegos retro para darles una segunda vida. Lo que empezó como una colección personal ha acabado convirtiéndose en un pequeño negocio de compra-venta. Al empezar a trabajar con una socia, me he dado cuenta de que las hojas de cálculo ya no son suficientes para controlar el volumen de stock y las operaciones que hacemos a diario.
+# 🕹️ RetroJuegos: Proyecto Intermodular
+<p align="center">
+  <img src="./docs/imagenes/LogoRetroJuegos.jpg" alt="Logo RetroJuegos" width="300">
+</p>
 
-El objetivo principal es tener el control total sobre el ciclo de vida de cada videojuego. Desde que localizamos un título y lo compramos a un particular, hasta que sale vendido hacia un nuevo hogar. Necesito saber qué tenemos, en qué estado está y quién ha gestionado cada paso.
-La APP funcionará como una herramienta de escritorio , ya que por el momento no dispongo de conocimientos suficientes para pensar a lo grande.
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-00000f?style=for-the-badge&logo=mysql&logoColor=white)
 
-La estructura de mi repo será la siguiente:
-- En /src estará todo el código de JAVA.
-- La estructura de la base de datos estará en /sql.
-- El diseño visual , esquemas y diagramas en /diagramas.
-- El resto de la documentación técnica la puedéis encontrar en  /docs.
+Este proyecto nace de una pasión personal: la recuperación de videojuegos retro. Lo que comenzó como coleccionismo ha evolucionado hacia un modelo de negocio de compra-venta que requiere una gestión técnica profesional. Como estudiante de **1º de DAM**, desarrollo esta solución para integrar la lógica de negocio real con la eficiencia técnica necesaria.
 
-¿Qué voy a usar? 
-Para el desarrollo utilizaré Java conectado a una base de datos MySQL/MariaDB.
-También aprovecho las ventajas de los archivos XML y XSD para poder exportar datos o generar informes de stock de forma limpia.
+---
 
-Funciones principales  :
-- Gestión del inventario : Registro de los videojuegos por plataforma y género.
-- Operaciones : Se registran tanto compras como ventas. Esto me permite saber quien incorporó el juego , quien lo vendió y a quien. 
-- Control de usuarios: Diferentes perfiles para diferentes acciones. Contaran con usuario y contraseña para reforzar la seguridad.
-- Sistema de compras y ventas : La app registra quien adquirió el juego así me facilita el reparto de beneficios ya que el reparto con mi compañera es de 70/30 si procede de mi stock personal o de 50/50 si lo hemos adquirido juntas.
+## 📂 Estructura del Repositorio y Vinculación Curricular
 
+Para facilitar la navegación y entender cómo se aplican los conocimientos de cada asignatura del ciclo, el repositorio se organiza así:
 
+*   [**💻 /src (Código Fuente)**](./src) : Implementación íntegra de la lógica de la APP.
+    *   *Asignaturas:* **Programación** y **MPO**.
+*   [**🗄️ /sql (Base de Datos)**](./sql) : Scripts de creación, consultas.
+    *   *Asignatura:* **Bases de Datos**.
+*   [**🎨 /diagramas (Diseño Visual)**](./diagramas) : Esquemas E-R, modelos relacionales y diagramas de flujo.
+    *   *Asignatura:* **Bases de Datos**.
+*   [**📄 /docs (Documentación Técnica)**](./docs) : Repositorio central de documentación del proyecto:
+    *   [**📁 Empleabilidad**](./docs/empleabilidad) : Investigación del sector, perfil profesional y presentación del proyecto.
+    *   [**📁 XML**](./docs/xml): Estructuras de datos e informes. (Asignatura: **Lenguaje de Marcas**).
+    *   [**📁 Sistemas**](./docs/sistemas): Informe técnico del proyecto, información de instalación y uso y vídeo del funcionamiento (Asignatura: **Sistemas Informáticos**).
 
-Este es el primer proyecto "de verdad" que hago y espero meterle bastantes horas. Me hace ilusión ver que lo que estudio en clase sirve para algo más que aprobar y que por fin puedo usar los conocimientos para algo real y que me motiva e ilusiona. 
+---
+
+## 🚀 Funcionalidades y Lógica de Negocio
+
+1.  **Gestión de Inventario**: Registro profesional por plataforma y género.
+2.  **Seguridad**: Control de accesos mediante perfiles de usuario.
+3.  **Cálculo de Beneficios**: Algoritmo que automatiza el reparto según el origen del stock:
+    *   **70/30**: Stock personal.
+    *   **50/50**: Adquisición conjunta con socia.
+4.  **Eficiencia**
+
+---
+
+## 🛠️ Stack Tecnológico
+
+*   **Lenguaje:** Java 24 (conectado mediante JDBC).
+*   **Base de Datos:** MySQL / MariaDB.
+*   **Formatos:** Exportación e informes en **XML/XSD** para asegurar datos limpios y portables.
+*   **Gestión:** Entorno profesional con **GitHub**.
+
+---
+
+## 🎯 Motivación
+Este es mi primer proyecto "de verdad". Me motiva transformar un hobby en un sistema controlado y profesionalizado que me permita aplicar cada día lo aprendido en el aula.
+
+---
+*Desarrollado por Mónica Espiñeira Aragón - 1º DAM*
 

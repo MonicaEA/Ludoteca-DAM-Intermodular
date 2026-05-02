@@ -1,1 +1,0 @@
-Documentación para la asignatura de BBDD, parte de creación de diagramas.
