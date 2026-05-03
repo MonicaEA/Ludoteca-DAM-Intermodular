@@ -70,3 +70,38 @@ WHERE EXISTS (SELECT 1 FROM compras co WHERE co.id_cliente = c.id_cliente);
 /* Para detectar si algun juego esta en compras pero no en videojuegos*/
 SELECT id_juego FROM compras 
 WHERE id_juego NOT IN (SELECT id_juego FROM videojuegos);
+
+
+/* --- CONSULTAS IMPLEMENTADAS PARA LA LÓGICA DE LA APP --- */
+
+/* [VideojuegoDAO] Listar videojuegos disponibles para la venta */
+/* Selecciona solo los juegos que no han sido registrados en la tabla de ventas */
+SELECT vj.* 
+FROM videojuegos vj 
+LEFT JOIN ventas v ON vj.id_juego = v.id_juego 
+WHERE v.id_juego IS NULL;
+
+/* [ComprasDAO] Calcular la inversión total en stock */
+/* Suma el precio de compra de todos los registros de la tabla compras */
+SELECT SUM(v.precio_compra) AS total 
+FROM compras c 
+JOIN videojuegos v ON c.id_juego = v.id_juego;
+
+/* [VentasDAO] Calcular beneficio neto por tipo de procedencia */
+/* Fundamental para el reparto de beneficios (70/30 o 50/50). 
+   Se filtra por 'comun' o 'propio' según el caso */
+SELECT SUM(ve.precio_final - v.precio_compra) AS beneficio 
+FROM ventas ve 
+JOIN videojuegos v ON ve.id_juego = v.id_juego 
+WHERE v.tipo_stock = ?;
+
+/* [ExportadorXML] Obtención de datos cruzados para informe XML */
+/* Recupera la información completa del catálogo incluyendo nombres de plataforma y género */
+SELECT v.*, c.fecha_compra AS fecha_registro, p.nombre_plataforma, g.nombre_genero 
+FROM videojuegos v 
+JOIN plataformas p ON v.id_plataforma = p.id_plataforma 
+JOIN generos g ON v.id_genero = g.id_genero 
+JOIN compras c ON v.id_juego = c.id_juego;
+
+/* [VentasDAO] Suma total de ingresos por ventas */
+SELECT SUM(precio_final) AS total FROM ventas;
