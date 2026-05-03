@@ -13,6 +13,8 @@ Este software nace de una necesidad real y personal: la gestión de un negocio d
 
 La aplicación no solo controla el stock físico, sino que integra la lógica financiera de nuestra sociedad. He implementado algoritmos específicos para **automatizar el cálculo de beneficios individuales**. El sistema distingue la procedencia de cada artículo (stock propio o compartido), ya que el reparto de ganancias varía según el origen, asegurando así una transparencia total en nuestras finanzas.
 
+El sistema es escalable y la próxima fase sería la gestión de usuarios desde la propia interfaz para no depender de scripts SQL, y el poder filtrar las finanzas por fechas concretas, asi como la busqueda de operaciones pasadas.
+
 ### 💡 Problema que resuelve
 El mercado del coleccionismo a menudo se gestiona de forma caótica. **RetroJuegos** soluciona:
 *   **Gestión de Sociedades**: Calcula automáticamente cuánto corresponde a cada socia basándose en la procedencia del stock.
