@@ -1,8 +1,5 @@
 package com.retrojuegos.retrojuegos.Service;
 import com.retrojuegos.retrojuegos.model.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 
 public class UsuarioActualService {
@@ -21,8 +18,5 @@ public class UsuarioActualService {
         usuarioActivo = null;
     }
 
-    public static boolean esAdmin() {
-        return usuarioActivo != null &&
-                usuarioActivo.getPerfil().name().equals("ADMINISTRADOR");
-    }
+
 }
