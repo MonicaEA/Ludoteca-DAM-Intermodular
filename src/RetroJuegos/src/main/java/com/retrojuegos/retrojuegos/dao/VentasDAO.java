@@ -54,45 +54,36 @@ public class VentasDAO {
 
     public double obtenerSumaTotalVentas() throws SQLException {
         double total = 0.0;
-        connection = DBConnection.getConnection();
+        Connection connection = DBConnection.getConnection();
+        String query = "SELECT SUM(precio_final) AS total FROM ventas";
 
-
-        String query = "SELECT SUM(v.precio_venta_estimado) AS total " +
-                "FROM ventas ve " +
-                "JOIN videojuegos v ON ve.id_juego = v.id_juego";
-
-        preparedStatement = connection.prepareStatement(query);
-        resultSet = preparedStatement.executeQuery();
-
-        if (resultSet.next()) {
-            total = resultSet.getDouble("total");
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+            if (resultSet.next()) {
+                total = resultSet.getDouble("total");
+            }
         }
-
-        preparedStatement.close();
         return total;
     }
+        public double obtenerBeneficioNeto (String tipoStock) throws SQLException {
+            double beneficio = 0.0;
+            Connection connection = DBConnection.getConnection();
+            String query = "SELECT SUM(ve.precio_final - v.precio_compra) AS beneficio " +
+                    "FROM ventas ve " +
+                    "JOIN videojuegos v ON ve.id_juego = v.id_juego " +
+                    "WHERE v.tipo_stock = ?";
 
-    public double obtenerBeneficioNeto(String tipoStock) throws SQLException {
-        double beneficio = 0.0;
-        connection = DBConnection.getConnection();
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                preparedStatement.setString(1, tipoStock.toLowerCase());
 
-        // Sumamos la diferencia entre venta estimada y compra para ese tipo de stock
-        String query = "SELECT SUM(v.precio_venta_estimado - v.precio_compra) AS beneficio " +
-                "FROM ventas ve " +
-                "JOIN videojuegos v ON ve.id_juego = v.id_juego " +
-                "WHERE v.tipo_stock = ?";
-
-        preparedStatement = connection.prepareStatement(query);
-        preparedStatement.setString(1, tipoStock.toLowerCase());
-
-        resultSet = preparedStatement.executeQuery();
-        if (resultSet.next()) {
-            beneficio = resultSet.getDouble("beneficio");
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        beneficio = resultSet.getDouble("beneficio");
+                    }
+                }
+            }
+            return beneficio;
         }
-        preparedStatement.close();
-        return beneficio;
-    }
-
     }
 
 

@@ -1,15 +1,12 @@
 package com.retrojuegos.retrojuegos.ControllerView;
-
+import com.retrojuegos.retrojuegos.Service.ComprasService;
+import com.retrojuegos.retrojuegos.Service.NavegacionMenuService;
+import com.retrojuegos.retrojuegos.Service.UsuarioActualService;
 import com.retrojuegos.retrojuegos.dao.*;
 import com.retrojuegos.retrojuegos.model.*;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -30,10 +27,9 @@ public class ComprasViewController implements Initializable {
     TextField txtApellidos, txtDni, txtEmail, txtNombre, txtPrecioCompra, txtTelefono, txtTitulo, txtPrecioVenta;
 
     private ClientesDAO clientesDAO = new ClientesDAO();
-    private VideojuegoDAO videojuegoDAO = new VideojuegoDAO();
-    private ComprasDAO comprasDAO = new ComprasDAO();
     private PlataformasDAO plataformasDAO = new PlataformasDAO();
     private GenerosDAO generosDAO = new GenerosDAO();
+    private ComprasService compraService = new ComprasService();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -78,17 +74,9 @@ public class ComprasViewController implements Initializable {
         // finalizar
         btnFinalizar.setOnAction(event -> ejecutarCompra());
 
-        // menu principal
+        // menu principal, uso metodo externo para no repetirlo 4 veces
         btnVolver.setOnAction(event -> {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/retrojuegos/retrojuegos/main-view.fxml"));
-                Parent root = loader.load();
-                Stage stage = (Stage) btnVolver.getScene().getWindow();
-                stage.setScene(new Scene(root));
-                stage.setTitle("MENÚ PRINCIPAL");
-            } catch (IOException e) {
-                System.out.println("Error al volver al menú principal");
-            }
+            NavegacionMenuService.irAMenuPrincipal(btnVolver);
         });
     }
 
@@ -113,41 +101,34 @@ public class ComprasViewController implements Initializable {
         }
     }
 
+
     private void ejecutarCompra() {
         try {
-            Usuarios usuario = UsuarioActualController.getUsuarioLogueado();
-            Clientes cliente = clientesDAO.buscarPorTelefono(txtTelefono.getText());
 
-            if (cliente == null) {
-                cliente = new Clientes(0, txtDni.getText(), txtNombre.getText(), txtApellidos.getText(), txtEmail.getText(), txtTelefono.getText(), TipoCliente.AMBOS);
-                clientesDAO.insertarCliente(cliente);
-                cliente = clientesDAO.buscarPorTelefono(txtTelefono.getText());
-            }
+            Usuarios usuario = UsuarioActualService.identificar();
 
-            Videojuegos videojuego = new Videojuegos(
-                    0,
-                    txtTitulo.getText(),
+            Clientes cliente = new Clientes(0, txtDni.getText(), txtNombre.getText(),
+                    txtApellidos.getText(), txtEmail.getText(),
+                    txtTelefono.getText(), TipoCliente.AMBOS);
+
+            Videojuegos videojuego = new Videojuegos(0, txtTitulo.getText(),
                     Double.parseDouble(txtPrecioCompra.getText()),
                     Double.parseDouble(txtPrecioVenta.getText()),
                     comboPlataforma.getValue().getIdPlataforma(),
                     comboGenero.getValue().getIdGenero(),
                     choiceEstado.getValue(),
                     choiceTipo.getValue(),
-                    usuario.getIdUsuario()
-            );
+                    usuario.getIdUsuario());
 
-            int idJuegoGenerado = videojuegoDAO.insertarJuego(videojuego);
-
-            Compras compra = new Compras(0, java.time.LocalDate.now(), idJuegoGenerado, usuario.getIdUsuario(), cliente.getIdCliente());
-            comprasDAO.insertarCompra(compra);
+            compraService.procesarNuevaCompra(cliente, videojuego, usuario);
 
             mostrarAlerta("ÉXITO", "Compra guardada correctamente");
             limpiarTodo();
 
         } catch (SQLException e) {
-            mostrarAlerta("ERROR BBDD", e.getMessage());
+            mostrarAlerta("ERROR BBDD", "No se pudo guardar: " + e.getMessage());
         } catch (NumberFormatException e) {
-            mostrarAlerta("ERROR DATOS", "Los precios deben ser números");
+            mostrarAlerta("ERROR DATOS", "Revisa los precios introducidos");
         }
     }
 

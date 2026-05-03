@@ -1,9 +1,8 @@
 package com.retrojuegos.retrojuegos.ControllerView;
-
-import com.retrojuegos.retrojuegos.dao.UsuarioDAO;
+import com.retrojuegos.retrojuegos.Service.LoginService;
+import com.retrojuegos.retrojuegos.Service.UsuarioActualService;
 import com.retrojuegos.retrojuegos.model.Usuarios;
 import javafx.fxml.FXML;
-
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -13,7 +12,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -30,7 +28,8 @@ public class LoginViewController implements Initializable {
     @FXML
     private Button btnLogin;
 
-    private UsuarioDAO usuarioDAO = new UsuarioDAO();
+    private LoginService loginService = new LoginService();
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -40,27 +39,21 @@ public class LoginViewController implements Initializable {
     }
 
     private void validarAcesso() {
-
-
-        String dni = dniLogin.getText();
-        String pass = passLogin.getText();
-
-        if (dni.isEmpty() || pass.isEmpty()) {
-            mostrarAlerta("Faltan datos", "Rellena los campos");
-            return;
-        }
         try {
-            Usuarios user = usuarioDAO.validarLogin(dni, pass);
-            if (user != null) {
-                System.out.println("Datos correctos ,bienvenida al curro " + user.getNombre());
-                UsuarioActualController.setUsuarioLogueado(user);
-                cambiarAMenuPrincipal();
 
-            } else {
-                mostrarAlerta("Te has equivocado", "Error de datos de acceso!!!!");
-            }
+            String dni = dniLogin.getText();
+            String pass = passLogin.getText();
+
+            Usuarios user = loginService.autenticar(dni, pass);
+
+            System.out.println("Bienvenida, " + user.getNombre());
+            UsuarioActualService.conectar(user);
+            cambiarAMenuPrincipal();
+
+        } catch (IllegalArgumentException e) {
+            mostrarAlerta("Datos incorrectos", e.getMessage());
         } catch (SQLException e) {
-            mostrarAlerta("Error", "No nos hemos conectado a la BBDD :(");
+            mostrarAlerta("Error", "No hay conexión con la base de datos");
         }
     }
 
