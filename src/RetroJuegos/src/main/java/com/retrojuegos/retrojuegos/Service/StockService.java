@@ -32,15 +32,16 @@ public class StockService {
     }
 
 
-    public void exportarInventarioaXML(){
-        try(Connection connection = DBConnection.getConnection()){
+    public void exportarInventarioaXML() {
+        try {
+            Connection connection = DBConnection.getConnection();
+
             ExportadorXML exportadorXML = new ExportadorXML();
             exportadorXML.exportarInventario(connection);
+
         } catch (Exception e) {
-            System.out.println("Error en la conexión: "+e.getMessage());
+            System.out.println("Error en la exportación: " + e.getMessage());
         }
 
     }
-
-
 }

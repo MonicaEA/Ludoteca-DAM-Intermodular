@@ -13,187 +13,47 @@
         </usuario>
     </usuarios>
     <catalogo>
-        <videojuego id="v14" usuarioReg="u1">
-            <titulo>Medievil</titulo>
-            <plataforma>PSX</plataforma>
-            <genero>Aventuras</genero>
-            <precios>
-                <compra moneda="EUR">20.0</compra>
-                <venta_estimado moneda="EUR">35.0</venta_estimado>
-            </precios>
-            <stock_info>
-                <tipo>propio</tipo>
-                <estado>COMPLETO</estado>
-            </stock_info>
-            <fecha_registro>2026-05-01</fecha_registro>
-        </videojuego>
-        <videojuego id="v17" usuarioReg="u1">
-            <titulo>Monkey Island</titulo>
-            <plataforma>PS2</plataforma>
-            <genero>Aventuras</genero>
-            <precios>
-                <compra moneda="EUR">10.0</compra>
-                <venta_estimado moneda="EUR">25.0</venta_estimado>
-            </precios>
-            <stock_info>
-                <tipo>propio</tipo>
-                <estado>COMPLETO</estado>
-            </stock_info>
-            <fecha_registro>2026-05-03</fecha_registro>
-        </videojuego>
-        <videojuego id="v12" usuarioReg="u1">
-            <titulo>F1 GRAN PRIIX</titulo>
-            <plataforma>Nintendo NES</plataforma>
-            <genero>Deportes</genero>
-            <precios>
-                <compra moneda="EUR">10.0</compra>
-                <venta_estimado moneda="EUR">20.0</venta_estimado>
-            </precios>
-            <stock_info>
-                <tipo>comun</tipo>
-                <estado>SOLO JUEGO</estado>
-            </stock_info>
-            <fecha_registro>2026-04-29</fecha_registro>
-        </videojuego>
-        <videojuego id="v15" usuarioReg="u1">
-            <titulo>Fifa 99</titulo>
-            <plataforma>PSX</plataforma>
-            <genero>Deportes</genero>
-            <precios>
-                <compra moneda="EUR">10.0</compra>
-                <venta_estimado moneda="EUR">20.0</venta_estimado>
-            </precios>
-            <stock_info>
-                <tipo>propio</tipo>
-                <estado>SOLO JUEGO</estado>
-            </stock_info>
-            <fecha_registro>2026-05-02</fecha_registro>
-        </videojuego>
-        <videojuego id="v2" usuarioReg="u1">
-            <titulo>Super Mario</titulo>
-            <plataforma>Game Boy</plataforma>
-            <genero>Plataformas</genero>
-            <precios>
-                <compra moneda="EUR">5.0</compra>
-                <venta_estimado moneda="EUR">15.0</venta_estimado>
-            </precios>
-            <stock_info>
-                <tipo>propio</tipo>
-                <estado>SOLO JUEGO</estado>
-            </stock_info>
-            <fecha_registro>2026-04-18</fecha_registro>
-        </videojuego>
-        <videojuego id="v3" usuarioReg="u1">
-            <titulo>Donkey Kong</titulo>
-            <plataforma>Nintendo GameCube</plataforma>
-            <genero>Plataformas</genero>
-            <precios>
-                <compra moneda="EUR">5.0</compra>
-                <venta_estimado moneda="EUR">15.0</venta_estimado>
-            </precios>
-            <stock_info>
-                <tipo>comun</tipo>
-                <estado>COMPLETO</estado>
-            </stock_info>
-            <fecha_registro>2026-04-20</fecha_registro>
-        </videojuego>
-        <videojuego id="v10" usuarioReg="u1">
-            <titulo>pepito</titulo>
-            <plataforma>PS2</plataforma>
-            <genero>Plataformas</genero>
-            <precios>
-                <compra moneda="EUR">10.0</compra>
-                <venta_estimado moneda="EUR">150.0</venta_estimado>
-            </precios>
-            <stock_info>
-                <tipo>comun</tipo>
-                <estado>CAJA SIN MANUAL</estado>
-            </stock_info>
-            <fecha_registro>2026-04-27</fecha_registro>
-        </videojuego>
-        <videojuego id="v11" usuarioReg="u1">
-            <titulo>Tomb Raider</titulo>
-            <plataforma>PSX</plataforma>
-            <genero>Plataformas</genero>
-            <precios>
-                <compra moneda="EUR">25.0</compra>
-                <venta_estimado moneda="EUR">45.0</venta_estimado>
-            </precios>
-            <stock_info>
-                <tipo>comun</tipo>
-                <estado>CAJA SIN MANUAL</estado>
-            </stock_info>
-            <fecha_registro>2026-04-28</fecha_registro>
-        </videojuego>
-        <videojuego id="v13" usuarioReg="u1">
-            <titulo>Super Mario 2</titulo>
-            <plataforma>Game Boy</plataforma>
-            <genero>Plataformas</genero>
-            <precios>
-                <compra moneda="EUR">10.0</compra>
-                <venta_estimado moneda="EUR">25.0</venta_estimado>
-            </precios>
-            <stock_info>
-                <tipo>comun</tipo>
-                <estado>CAJA SIN MANUAL</estado>
-            </stock_info>
-            <fecha_registro>2026-05-01</fecha_registro>
-        </videojuego>
         <videojuego id="v1" usuarioReg="u1">
-            <titulo>The Legend of Zelda</titulo>
-            <plataforma>Nintendo NES</plataforma>
-            <genero>RPG</genero>
-            <precios>
-                <compra moneda="EUR">35.0</compra>
-                <venta_estimado moneda="EUR">120.0</venta_estimado>
-            </precios>
-            <stock_info>
-                <tipo>comun</tipo>
-                <estado>COMPLETO</estado>
-            </stock_info>
-            <fecha_registro>2026-04-15</fecha_registro>
-        </videojuego>
-        <videojuego id="v9" usuarioReg="u1">
             <titulo>Zelda</titulo>
             <plataforma>Nintendo GameCube</plataforma>
             <genero>RPG</genero>
             <precios>
-                <compra moneda="EUR">100.0</compra>
-                <venta_estimado moneda="EUR">1200.0</venta_estimado>
-            </precios>
-            <stock_info>
-                <tipo>propio</tipo>
-                <estado>PRECINTADO</estado>
-            </stock_info>
-            <fecha_registro>2026-04-27</fecha_registro>
-        </videojuego>
-        <videojuego id="v16" usuarioReg="u1">
-            <titulo>Tales of symphonia</titulo>
-            <plataforma>Nintendo GameCube</plataforma>
-            <genero>RPG</genero>
-            <precios>
-                <compra moneda="EUR">18.0</compra>
-                <venta_estimado moneda="EUR">40.0</venta_estimado>
-            </precios>
-            <stock_info>
-                <tipo>propio</tipo>
-                <estado>COMPLETO</estado>
-            </stock_info>
-            <fecha_registro>2026-05-03</fecha_registro>
-        </videojuego>
-        <videojuego id="v8" usuarioReg="u1">
-            <titulo>Double Dragon</titulo>
-            <plataforma>Game Boy</plataforma>
-            <genero>Shooter</genero>
-            <precios>
-                <compra moneda="EUR">25.0</compra>
+                <compra moneda="EUR">10.0</compra>
                 <venta_estimado moneda="EUR">100.0</venta_estimado>
             </precios>
             <stock_info>
                 <tipo>propio</tipo>
                 <estado>COMPLETO</estado>
             </stock_info>
-            <fecha_registro>2026-04-27</fecha_registro>
+            <fecha_registro>2026-05-03</fecha_registro>
+        </videojuego>
+        <videojuego id="v2" usuarioReg="u2">
+            <titulo>Zelda</titulo>
+            <plataforma>DreamCast</plataforma>
+            <genero>Aventuras</genero>
+            <precios>
+                <compra moneda="EUR">10.0</compra>
+                <venta_estimado moneda="EUR">100.0</venta_estimado>
+            </precios>
+            <stock_info>
+                <tipo>comun</tipo>
+                <estado>COMPLETO</estado>
+            </stock_info>
+            <fecha_registro>2026-05-03</fecha_registro>
+        </videojuego>
+        <videojuego id="v3" usuarioReg="u2">
+            <titulo>Super Mario</titulo>
+            <plataforma>Game Boy</plataforma>
+            <genero>Aventuras</genero>
+            <precios>
+                <compra moneda="EUR">10.0</compra>
+                <venta_estimado moneda="EUR">30.0</venta_estimado>
+            </precios>
+            <stock_info>
+                <tipo>comun</tipo>
+                <estado>CAJA SIN MANUAL</estado>
+            </stock_info>
+            <fecha_registro>2026-05-03</fecha_registro>
         </videojuego>
     </catalogo>
 </retro_inventario>
